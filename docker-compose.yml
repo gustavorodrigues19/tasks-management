@@ -15,6 +15,7 @@ services:
       - "3333:3333"
     depends_on:
       - db
+      - amqp
       
   db:
     image: mysql:5.7
@@ -23,12 +24,27 @@ services:
     restart: always
     tty: true
     volumes: 
+      - ./scripts:/docker-entrypoint-initdb.d
       - ./mysql:/var/lib/mysql
     environment:
-      - MYSQL_DATABASE=tasksdb
+      - MYSQL_DATABASE=managementdb
       - MYSQL_ROOT_PASSWORD=root
     networks:
       - tasks-network
+
+  amqp:
+    image: rabbitmq:3.9-management-alpine
+    container_name: 'amqp'
+    restart: always
+    environment:
+      - RABBITMQ_DEFAULT_PASS=guest
+      - RABBITMQ_DEFAULT_USER=guest
+    ports:
+      - 15672:15672
+      - 5672:5672
+    networks:
+      - tasks-network 
+      
 
 networks:
   tasks-network:

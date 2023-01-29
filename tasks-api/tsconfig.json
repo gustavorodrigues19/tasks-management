@@ -2,7 +2,7 @@
   "extends": "@tsconfig/node16/tsconfig.json",
   "esModuleInterop": true,
   "compilerOptions": {
-    "outDir": "dist"
+    "outDir": "dist",
   },
   "include": [
     "src"
