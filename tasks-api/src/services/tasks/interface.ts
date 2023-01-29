@@ -1,6 +1,7 @@
-import { ITask } from '../../models/tasks'
+import { ITask } from '../../models/task'
 
 export interface ITaskService {
-  createTask(summary: string): Promise<ITask>
-  getAllTasks(): Promise<ITask[]>
+  createTask(summary: string, userId: number): Promise<ITask>
+  getAllTasks(userId: number): Promise<ITask[]>
+  performTask(id: number): Promise<ITask>
 }
