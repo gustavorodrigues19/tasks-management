@@ -6,7 +6,7 @@ services:
     build: 
       context: tasks-api
     container_name: api
-    entrypoint: dockerize -wait tcp://db:3306 -timeout 20s /usr/src/app/entrypoint.sh
+    entrypoint: dockerize -wait tcp://db:3306 -timeout 80s /usr/src/app/entrypoint.sh
     networks:
       - tasks-network
     volumes:
@@ -27,7 +27,7 @@ services:
       - "33061:3306"
     volumes: 
       - ./scripts:/docker-entrypoint-initdb.d
-      - ./mysql:/var/lib/mysql
+      - ./mysqlFiles:/var/lib/mysql
     environment:
       - MYSQL_DATABASE=managementdb
       - MYSQL_ROOT_PASSWORD=root

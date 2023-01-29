@@ -9,8 +9,8 @@ dist/
 build/
 
 # remove all files of mysql folder except folder itself
-mysql/*
-!mysql/.gitkeep 
+mysqlFiles/*
+!mysqlFiles/.gitkeep 
 
 # Compiled Java class files
 *.class
