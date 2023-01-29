@@ -1,4 +1,7 @@
+export type IPublishMessage = {
+  message: string
+}
 export interface IMessageBroker {
-  consumeMessage(): Promise<string>
+  consumeMessage(): Promise<IPublishMessage>
   publishMessage(message: string): Promise<void>
 }

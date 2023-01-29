@@ -1,9 +1,10 @@
 import express, { Router } from 'express'
 import { tasksRoutes } from './tasks'
 import { IMethod } from './http-methods'
+import { notificationsRoutes } from './notifications'
 
 const router: Router = express.Router()
-const routes = [...tasksRoutes]
+const routes = [...tasksRoutes, ...notificationsRoutes]
 
 routes.forEach((route) => {
   const methods = Array.isArray(route.method) ? route.method : [route.method]
