@@ -8,6 +8,10 @@ node_modules/
 dist/
 build/
 
+# remove all files of mysql folder except folder itself
+mysql/*
+!mysql/.gitkeep 
+
 # Compiled Java class files
 *.class
 
