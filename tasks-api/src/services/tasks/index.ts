@@ -27,6 +27,7 @@ export class TaskService implements ITaskService {
 
   async getAllTasks(userId: number) {
     const user = await this.userRepository.findById(userId)
+    if (!user) throw new Error('User not exists')
     if (user.role === ROLES.MANAGER) {
       return await this.tasksRepository.findAll()
     } else {

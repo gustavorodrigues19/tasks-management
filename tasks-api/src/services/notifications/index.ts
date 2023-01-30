@@ -16,6 +16,7 @@ export class NotificationsService implements INotificationsService {
 
   async getNotifications(id: number) {
     const user = await this.userRepository.findById(id)
+    if (!user) throw new Error('User not exists')
     if (user.role === ROLES.MANAGER) {
       return await this.messageBroker.consumeMessage()
     } else {

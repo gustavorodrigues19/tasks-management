@@ -1,0 +1,11 @@
+{
+    "extension": [
+        "js,ts"
+    ],
+    "require": [
+        "ts-node/register"
+    ],
+    "timeout": 120000,
+    "exit": true,
+    "reporter": "spec"
+}

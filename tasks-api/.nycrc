@@ -1,0 +1,12 @@
+{
+  "all": true,
+  "include": [
+    "src/services/**/*",
+    "src/repositories/**/*"
+  ],
+  "exclude": [
+    "src/**/*test.js",
+    "src/**/*test.ts",
+    "src/**/*test.d.ts"
+  ]
+}

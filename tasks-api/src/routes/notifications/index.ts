@@ -13,19 +13,19 @@ const GetNotifications = {
         const notificationsService: INotificationsService = new NotificationsService()
         const userId = req.headers.user
         const userIdParsed = typeof userId !== 'string' ? 0 : parseInt(userId, 10)
-        const tasks = await notificationsService.getNotifications(userIdParsed)
+        const notifications = await notificationsService.getNotifications(userIdParsed)
 
         logger.info({
-          description: 'Get all tasks',
-          service: 'TaskService',
-          result: tasks,
+          description: 'Get all notifications',
+          service: 'Notifications Service',
+          result: notifications,
         })
 
-        res.status(200).send(tasks)
+        res.status(200).send(notifications)
       } catch (error) {
         logger.error({
-          description: 'Get all tasks',
-          service: 'TaskService',
+          description: 'Get all notifications',
+          service: 'Notifications Service',
           error,
         })
         next(error)

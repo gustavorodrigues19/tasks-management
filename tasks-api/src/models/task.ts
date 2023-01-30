@@ -1,10 +1,8 @@
-import { RowDataPacket } from 'mysql2'
-
-export interface ITask extends RowDataPacket {
+export interface ITask {
   id: number
   summary: string
   performedAt: Date | null
   userId: number
   name: string
-  role: 'manager' | 'technician'
+  role: string
 }
