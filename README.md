@@ -1,22 +1,16 @@
+# Tasks management app
+
+## Introduction
+In this app, manager creates and assign to technician execute them. When someone completes his/her task the manager receive a notification saying: 
+`The tech Technician X performed the task First task on date January 30th 2023, 1:19:35 am`
+
 - Requirements: 
-    - Types of users:
-        - manager
-        - technician
 
-    - manager:
-        - see all tasks from all technicians
-        - can delete tasks 
-        - notified when some technicians performs tasks
+    This application has two types of users manager and technician
 
-    - technician :
-        - do his/her tasks
-        - see your tasks
-        - update your tasks
+    - manager: can see all tasks from all technicians, can delete tasks, notified when some technicians performs tasks
 
-    - tasks:
-        - has summary (max:2500char)
-        - date it was performed
-        - summary contain personal information
+    - technician : perform his/her tasks, see your tasks, update your tasks
 
 
 - Practical
@@ -26,27 +20,32 @@
     - Notification shouldn't block any request
     - Unit tests required
 
+## How does it work
 
-- Technologies:
+To use this app is super simple, go to project root folder, type command below and docker compose does everything for you:
+
+    $ docker compose up
+
+Basically it will up MySql with the database `managementdb` with some initial data, rabbitMQ, and node js application.
+
+To kill all containers type: 
+
+    $ docker compose down
+
+Postman docs (Do not forget to pass user id in the headers, this identify which type of user is. It happens because this app does not have authentication system so far):
+
+    https://documenter.getpostman.com/view/13507787/2s935hQmkm
+
+
+To run unit tests go in tasks-api folder and run:
+
+    $ npm run test
+    $ npm run coverage
+
+## Technologies:
     - RabbitMQ (message broker)
     - MySQL database
     - Docker 
     - Docker-compose
-    - Nginx
     - Node js
-    - React js
     - Typescript
-
-
-Steps: 
-    1 - Create MySQl container with volume - docker-compose
-    2 - Create node api with nginx in front of it
-    2 - Create node api with: typescript, eslint and unit tests
-    3 - Crete api endpoints to perform tasks
-    4 - Container RabbitMQ
-    5 - Write RabbitMQ code in node.js
-    6 - Notify manager when technician perform task (Add message in queue)
-    7 - Create ReactApp with: Typescript, eslint and react-testing-library
-    8 - Dockerize react app
-    9 - Start components development
-    10 - Call endpoints according userType and check notifications
